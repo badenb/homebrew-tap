@@ -1,23 +1,24 @@
 class SledDog < Formula
   desc "Inline GitHub pull request and build companion"
   homepage "https://github.com/badenb/sled-dog"
-  version "1.0.0"
+  version "1.0.1"
 
   depends_on :macos => :sequoia
 
   on_macos do
     on_arm do
-      url "https://github.com/badenb/sled-dog/releases/download/v1.0.0/sled-dog-macos-arm64.tar.gz"
-      sha256 "67af540d89e74522f555dbb1b553676898778c29bec858f574619807d4edccbf"
+      url "https://github.com/badenb/sled-dog/releases/download/v1.0.1/sled-dog-macos-arm64.tar.gz"
+      sha256 "d52c9b2bb63185f71a45e2cecf911ce36696ab75799e8da4edb5bc5c8c2abeab"
     end
     on_intel do
-      url "https://github.com/badenb/sled-dog/releases/download/v1.0.0/sled-dog-macos-x86_64.tar.gz"
-      sha256 "f00ccdc15e3cccce0eeae9268c9f0d8fcfcf13f11137295ccc3ea25effc8d78c"
+      url "https://github.com/badenb/sled-dog/releases/download/v1.0.1/sled-dog-macos-x86_64.tar.gz"
+      sha256 "7991f48abb7a80ee0c2c833385d942908b7fdbe983f7ca5853cd5db0177c80ef"
     end
   end
 
   def install
-    bin.install "sled-dog"
+    libexec.install "sled-dog", "_internal"
+    bin.install_symlink libexec/"sled-dog"
     prefix.install "THIRD-PARTY-NOTICES.txt"
   end
 
@@ -30,7 +31,7 @@ class SledDog < Formula
   end
 
   test do
-    assert_match "Sled Dog 1.0.0", shell_output("#{bin}/sled-dog --version")
+    assert_match "Sled Dog 1.0.1", shell_output("#{bin}/sled-dog --version")
     assert_match '"standalone": true', shell_output("#{bin}/sled-dog doctor --json")
   end
 end
