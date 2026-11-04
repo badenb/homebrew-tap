@@ -1,18 +1,18 @@
 class SledDog < Formula
   desc "Inline GitHub pull request and build companion"
   homepage "https://github.com/badenb/sled-dog"
-  version "1.0.1"
+  version "1.0.2"
 
   depends_on :macos => :sequoia
 
   on_macos do
     on_arm do
-      url "https://github.com/badenb/sled-dog/releases/download/v1.0.1/sled-dog-macos-arm64.tar.gz"
-      sha256 "d52c9b2bb63185f71a45e2cecf911ce36696ab75799e8da4edb5bc5c8c2abeab"
+      url "https://github.com/badenb/sled-dog/releases/download/v1.0.2/sled-dog-macos-arm64.tar.gz"
+      sha256 "f1e767ea1b6b1732a8b127b0c66edf772c3fe6de2b547604178a2a90b4a4f952"
     end
     on_intel do
-      url "https://github.com/badenb/sled-dog/releases/download/v1.0.1/sled-dog-macos-x86_64.tar.gz"
-      sha256 "7991f48abb7a80ee0c2c833385d942908b7fdbe983f7ca5853cd5db0177c80ef"
+      url "https://github.com/badenb/sled-dog/releases/download/v1.0.2/sled-dog-macos-x86_64.tar.gz"
+      sha256 "90b33e3ceb4cf895c4c613f93b76f1e4d3bdde184a382b1b6b2f0a780fd4ef13"
     end
   end
 
@@ -31,7 +31,7 @@ class SledDog < Formula
   end
 
   test do
-    assert_match "Sled Dog 1.0.1", shell_output("#{bin}/sled-dog --version")
+    assert_match "Sled Dog 1.0.2", shell_output("#{bin}/sled-dog --version")
     assert_match '"standalone": true', shell_output("#{bin}/sled-dog doctor --json")
   end
 end
